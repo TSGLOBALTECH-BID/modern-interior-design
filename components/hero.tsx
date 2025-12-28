@@ -1,19 +1,17 @@
 // components/hero.tsx
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
+import { EnquiryForm } from "@/components/enquiry-form"
 
 export function Hero() {
     return (
         <section className="relative min-h-[80vh] flex items-center overflow-hidden">
             {/* Background Image Container */}
             <div className="absolute inset-0 z-0">
-                {/* Gradient Overlay - Only one instance needed */}
                 <div
                     className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/60 to-white/0 dark:from-black/80 dark:to-black/60 z-10"
                     aria-hidden="true"
                 />
-
-                {/* Single Image with Dark Mode Toggle */}
                 <Image
                     src="/images/hero-background.avif"
                     alt="Modern Interior Design"
@@ -24,7 +22,7 @@ export function Hero() {
                     sizes="100vw"
                 />
                 <Image
-                    src="/images/hero-background-dark.avif" // Consider a darker version for dark mode
+                    src="/images/hero-background.avif"
                     alt="Modern Interior Design"
                     fill
                     priority
@@ -34,20 +32,27 @@ export function Hero() {
                 />
             </div>
 
-            {/* Content */}
-            <div className="container mx-auto px-4 py-24 md:py-32 relative z-20">
-                <div className="max-w-3xl space-y-6">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
-                        Transform Your Space with Modern Design
-                    </h1>
-                    
-                    <div className="flex flex-wrap gap-4 pt-4">
-                        <Button>
-                            Explore Collections
-                        </Button>
-                        <Button variant="outline">
-                            Book Consultation
-                        </Button>
+            <div className="container mx-auto px-4 py-12 relative z-20">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    {/* Left side - Content (2/3 width on lg screens) */}
+                    <div className="lg:col-span-2 space-y-6">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+                            Transform Your Space with Modern Design
+                        </h1>
+                        <div className="flex flex-wrap gap-4 pt-4">
+                            <Button>
+                                Explore Collections
+                            </Button>
+                            <Button variant="outline">
+                                Book Consultation
+                            </Button>
+                        </div>
+                    </div>
+
+                    {/* Right side - Enquiry Form (1/3 width on lg screens) */}
+                    <div className="lg:col-span-1 bg-background/80 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-border">
+                        <h2 className="text-2xl font-semibold mb-6 text-center">Get in Touch</h2>
+                        <EnquiryForm />
                     </div>
                 </div>
             </div>
