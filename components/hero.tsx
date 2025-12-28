@@ -5,11 +5,11 @@ import { EnquiryForm } from "@/components/enquiry-form"
 
 export function Hero() {
     return (
-        <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        <section className="relative min-h-screen flex items-start pt-24 overflow-hidden">
             {/* Background Image Container */}
             <div className="absolute inset-0 z-0">
                 <div
-                    className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/60 to-white/0 dark:from-black/80 dark:to-black/60 z-10"
+                    className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/10 to-white/0 dark:from-black/80 dark:to-black/60 z-10"
                     aria-hidden="true"
                 />
                 <Image
