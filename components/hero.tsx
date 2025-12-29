@@ -43,10 +43,10 @@ export function Hero() {
                         </h1>
                         <div className="flex flex-wrap gap-4 pt-4">
                             <Button>
-                                Explore Collections
+                                Explore Works Done
                             </Button>
                             <Button variant="outline">
-                                Book Consultation
+                                Book Free Consultation
                             </Button>
                         </div>
                     </div>
