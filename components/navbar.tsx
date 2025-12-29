@@ -44,8 +44,7 @@ export function Navbar() {
         { name: "Home", href: "/" },
         { name: "About", href: "#about" },
         { name: "Services", href: "#services" },
-        { name: "Portfolio", href: "#portfolio" },
-        { name: "Contact", href: "#contact" },
+        { name: "Our Works", href: "#portfolio" }
     ]
 
     // Determine if we should use fixed positioning
@@ -62,12 +61,13 @@ export function Navbar() {
                     : ""
                 }`}>     <div className="flex justify-between items-center h-16">
                     {/* Logo */}
-                    <Link href="/" className="text-xl font-bold text-foreground">
+                    <Link href="/" className="text-xl font-bold text-foreground whitespace-nowrap">
                         Modern Interiors
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center space-x-8">
+                    <div className="hidden md:flex items-center w-full">
+                        <nav className="mx-auto flex items-center space-x-8">
                         {navItems.map((item) => (
                             <Link
                                 key={item.name}
@@ -77,10 +77,11 @@ export function Navbar() {
                                 {item.name}
                             </Link>
                         ))}
-                        <Button size="sm" className="ml-4">
-                            Get Started
+                        </nav>
+                        <Button size="sm" className="ml-8">
+                            Contact Us
                         </Button>
-                    </nav>
+                    </div>
 
                     {/* Mobile menu button */}
                     <div className="md:hidden">
@@ -110,7 +111,7 @@ export function Navbar() {
                                 </Link>
                             ))}
                             <Button className="w-full mt-2" size="sm">
-                                Get Started
+                                Contact Us
                             </Button>
                         </div>
                     </div>
