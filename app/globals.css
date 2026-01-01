@@ -102,6 +102,21 @@
   .bg-gradient {
     @apply bg-gradient-to-r from-primary-500 to-primary-700;
   }
+
+  /* Zoom in/out animation */
+  @keyframes zoomInOut {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+  }
+
+  .animate-zoom-in-out {
+    animation: zoomInOut 60s ease-in-out infinite;
+    will-change: transform;
+  }
 }
 
 /* Font faces */

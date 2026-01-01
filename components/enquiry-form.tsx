@@ -68,7 +68,7 @@ export function EnquiryForm() {
                         <FormItem>
                             <FormLabel>Phone</FormLabel>
                             <FormControl>
-                                <Input placeholder="+1 (555) 000-0000" {...field} />
+                                <Input placeholder="+91 783 886 3462" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
