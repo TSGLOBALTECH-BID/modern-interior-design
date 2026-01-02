@@ -6,6 +6,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
+import { commonContent } from "@/content/sharedContent"
+
 // Custom hook to handle mobile detection
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)
@@ -62,7 +64,7 @@ export function Navbar() {
                 }`}>     <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <Link href="/" className="text-xl font-bold text-foreground whitespace-nowrap">
-                        Modern Interiors
+                        {commonContent.companyName}
                     </Link>
 
                     {/* Desktop Navigation */}

@@ -1,6 +1,22 @@
-import { ServicesContent } from "@/types/content";
 import { Home, Layout, Box, Ruler, Lightbulb, Users, ArrowRight } from "lucide-react";
+import { SectionTitle } from "./sharedContent";
 
+export interface ServiceItem {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+export interface CtaButton {
+  text: string;
+  icon: React.ReactNode;
+}
+
+export interface ServicesContent {
+  sectionTitle: SectionTitle;
+  services: ServiceItem[];
+  ctaButton: CtaButton;
+}
 export const servicesContent: ServicesContent = {
   sectionTitle: {
     title: "Our",

@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
+import { commonContent } from "@/content/sharedContent"
+
 const formSchema = z.object({
     name: z.string().min(2, {
         message: "Name must be at least 2 characters.",
@@ -68,7 +70,7 @@ export function EnquiryForm() {
                         <FormItem>
                             <FormLabel>Phone</FormLabel>
                             <FormControl>
-                                <Input placeholder="+91 783 886 3462" {...field} />
+                                <Input placeholder={commonContent.phone} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -82,7 +84,7 @@ export function EnquiryForm() {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="your.email@example.com" {...field} />
+                                <Input placeholder={commonContent.Email} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

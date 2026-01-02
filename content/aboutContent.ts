@@ -1,4 +1,17 @@
-import { AboutContent } from "@/types/content";
+import { ButtonContent, SectionTitle } from "./sharedContent";
+
+export interface StatItem {
+  value: string;
+  label: string;
+  description: string;
+}
+
+export interface AboutContent {
+  sectionTitle: SectionTitle;
+  description: string[];
+  buttons: ButtonContent[];
+  stats: StatItem[];
+}
 
 export const aboutContent: AboutContent = {
   sectionTitle: {

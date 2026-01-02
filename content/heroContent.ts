@@ -1,4 +1,17 @@
-import { HeroContent } from "@/types/content";
+import { ButtonContent } from "./sharedContent";
+
+export interface HeroContent {
+  backgroundImage: {
+    light: string;
+    dark: string;
+    alt: string;
+  };
+  heading: string;
+  buttons: ButtonContent[];
+  form: {
+    title: string;
+  };
+}
 
 export const heroContent: HeroContent = {
   backgroundImage: {
