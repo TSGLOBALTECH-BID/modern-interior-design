@@ -1,10 +1,12 @@
 // components/why-us.tsx
-import { Button } from "@/components/ui/button"
-import { whyUsContent } from "@/content/whyUsContent"
+import { Button } from "@/components/ui/button";
 import { SectionHeading } from "./shared/section-heading";
+import { whyUsContent } from "@/content/whyUsContent";
+
 
 
 export function WhyUs() {
+
   const { sectionTitle, features, ctaButton } = whyUsContent;
 
   return (
@@ -12,9 +14,9 @@ export function WhyUs() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
          <SectionHeading
-                     title={whyUsContent.sectionTitle.title}
-                     subtitle={whyUsContent.sectionTitle.subtitle}
-                     highlightText={whyUsContent.sectionTitle.highlightText}
+                     title={sectionTitle.title}
+                     subtitle={sectionTitle.subtitle}
+                     highlightText={sectionTitle.highlightText}
                      className="mb-16"
                    />
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -23,7 +25,7 @@ export function WhyUs() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {features.map((feature, index) => (
+          {features.map((feature: any, index: number) => (
             <div 
               key={index}
               className="bg-card p-8 rounded-xl border border-border hover:shadow-lg transition-all duration-300"
@@ -41,12 +43,12 @@ export function WhyUs() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <Button size="lg" variant="outline" className="gap-2 group">
             {ctaButton.text}
             {ctaButton.icon}
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   )
