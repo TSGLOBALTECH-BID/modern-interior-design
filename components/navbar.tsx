@@ -3,8 +3,10 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 import { commonContent } from "@/content/sharedContent"
 
@@ -28,11 +30,11 @@ function useIsMobile() {
   return isMobile
 }
 
-
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
-     const isMobile = useIsMobile()
+    const isMobile = useIsMobile()
+    const pathname = usePathname()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -44,9 +46,9 @@ export function Navbar() {
 
     const navItems = [
         { name: "Home", href: "/" },
-        { name: "About", href: "#about" },
-        { name: "Services", href: "#services" },
-        { name: "Our Works", href: "#portfolio" }
+        { name: "About", href: "/about" },
+        { name: "Services", href: "/services" },
+        { name: "Our Works", href: "/our-works" }
     ]
 
     // Determine if we should use fixed positioning
@@ -61,7 +63,8 @@ export function Navbar() {
             <div className={`container mx-auto px-4 ${!shouldBeFixed
                     ? "bg-background/95 rounded-lg"
                     : ""
-                }`}>     <div className="flex justify-between items-center h-16">
+                }`}>
+                <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <Link href="/" className="text-xl font-bold text-foreground whitespace-nowrap">
                         {commonContent.companyName}
@@ -70,19 +73,30 @@ export function Navbar() {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center w-full">
                         <nav className="mx-auto flex items-center space-x-8">
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className="text-foreground/80 hover:text-foreground transition-colors"
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
+                        {navItems.map((item) => {
+                            const isActive = pathname === item.href || 
+                                          (item.href !== '/' && pathname.startsWith(item.href))
+                            return (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className={cn(
+                                        "relative py-1 px-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300",
+                                        isActive 
+                                            ? "text-foreground font-semibold after:w-full" 
+                                            : "text-foreground/80 hover:text-foreground after:w-0 hover:after:w-full after:bg-foreground/20"
+                                    )}
+                                >
+                                    {item.name}
+                                </Link>
+                            )
+                        })}
                         </nav>
-                        <Button size="sm" className="ml-8">
-                            Contact Us
-                        </Button>
+                        <Link href="/contact" passHref>
+                            <Button size="sm" className="ml-8">
+                                Contact Us
+                            </Button>
+                        </Link>
                     </div>
 
                     {/* Mobile menu button */}
@@ -106,15 +120,22 @@ export function Navbar() {
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="block px-3 py-2 rounded-md text-base font-medium text-foreground/80 hover:bg-accent/50 hover:text-foreground"
+                                    className={cn(
+                                        "block px-3 py-2 rounded-md text-base font-medium transition-colors",
+                                        pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+                                            ? "text-foreground bg-accent/30 font-semibold"
+                                            : "text-foreground/80 hover:bg-accent/10 hover:text-foreground"
+                                    )}
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {item.name}
                                 </Link>
                             ))}
-                            <Button className="w-full mt-2" size="sm">
-                                Contact Us
-                            </Button>
+                            <Link href="/contact" passHref className="w-full block">
+                                <Button className="w-full mt-2" size="sm" onClick={() => setIsOpen(false)}>
+                                    Contact Us
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 )}

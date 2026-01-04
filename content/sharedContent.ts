@@ -18,6 +18,7 @@ export interface ButtonContent {
   text: string;
   variant?: 'default' | 'outline' | 'ghost' | 'link' | 'secondary' | 'destructive' | null | undefined;
   icon?: string;
+  href?: string;
 }
 
 export interface SectionTitle {
@@ -26,4 +27,7 @@ export interface SectionTitle {
   highlightText?: string;
   description?: string;
 }
+
+
+
 

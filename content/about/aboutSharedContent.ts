@@ -1,39 +1,17 @@
-import { ButtonContent, commonContent, SectionTitle } from "./sharedContent";
+import { commonContent } from "../sharedContent";
 
-export interface StatItem {
+export interface AboutStatItem {
   value: string;
   label: string;
   description: string;
 }
 
-export interface AboutContent {
-  sectionTitle: SectionTitle;
-  description: string[];
-  buttons: ButtonContent[];
-  stats: StatItem[];
-}
-
-export const aboutContent: AboutContent = {
-  sectionTitle: {
-    title: "About",
-    subtitle: "Who we are",
-    highlightText: commonContent.companyName,
-  },
-  description: [
+export const description: string[] = [
     `At ${commonContent.companyName}, we believe in the transformative power of well-designed spaces. Our team of passionate designers and craftsmen work together to create environments that blend functionality with aesthetic appeal.`,
     `With over a decade of experience in the industry, we've mastered the art of turning visions into reality, one space at a time.`
-  ],
-  buttons: [
-    {
-      text: "Read More",
-      icon: "ArrowRight"
-    },
-    {
-      text: "Our Works",
-      variant: "outline"
-    }
-  ],
-  stats: [
+  ]
+
+export const aboutStats: AboutStatItem[] = [
     {
       value: "10+",
       label: "Years Experience",
@@ -55,4 +33,4 @@ export const aboutContent: AboutContent = {
       description: "Beautiful spaces created"
     }
   ]
-};
+

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { SectionHeading } from "./shared/section-heading"
-import { aboutContent } from "@/content/aboutContent"
+import { aboutContent } from "@/content/about/aboutSectionContent"
 
 export function AboutSection() {
   return (

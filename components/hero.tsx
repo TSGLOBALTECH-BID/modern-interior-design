@@ -79,7 +79,7 @@ export function Hero() {
                     </div>
 
                     {/* Right side - Enquiry Form (1/3 width on lg screens) */}
-                    <div className="hidden md:block lg:col-span-1 bg-background/80 backdrop-blur-sm p-6 my-4 mx-10 rounded-lg shadow-lg border border-border">
+                    <div className="hidden md:block lg:col-span-1 bg-background/80 backdrop-blur-sm p-6 my-4 mx-8 rounded-lg shadow-lg border border-border">
                         <h2 className="text-2xl font-semibold mb-6 text-center">
                             {heroContent.form.title}
                         </h2>
