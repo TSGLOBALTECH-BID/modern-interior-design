@@ -79,9 +79,9 @@ export function Footer() {
             <p className="text-sm text-slate-400 mb-4">
               Subscribe to our newsletter for the latest updates and trends.
             </p>
-            <div className="flex">
+            <div className="flex flex-col gap-4">
               <input
-                type="email"
+                type="email" 
                 placeholder="Your email"
                 className="px-4 py-2 text-sm bg-slate-800 border-slate-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent flex-1 placeholder-slate-500"
               />

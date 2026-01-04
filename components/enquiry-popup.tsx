@@ -15,7 +15,7 @@ export function EnquiryPopup({ isOpen, onClose, title }: EnquiryPopupProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent 
-        className="w-[calc(100%-2rem)] sm:w-[425px] md:w-[42rem] max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-2rem)] max-h-[90vh] overflow-y-auto"
+        className="w-[calc(100%-2rem)] sm:w-[425px] md:w-[42rem] max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-2rem)] max-h-[90vh] overflow-y-auto rounded-lg md:rounded-xl"
       >
         {null} {/* This replaces the default close button */}
         <DialogHeader>
