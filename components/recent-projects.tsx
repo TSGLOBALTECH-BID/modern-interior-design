@@ -9,7 +9,7 @@ export function RecentProjects() {
   const { sectionTitle, projects } = projectsContent;
 
   return (
-    <section id="projects" className="py-20 bg-muted/10 relative overflow-hidden">
+    <section id="projects" className="py-12 bg-muted relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 -z-10 opacity-5">
         <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>

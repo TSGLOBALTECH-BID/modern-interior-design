@@ -1,5 +1,6 @@
 import { CheckCircle, Award, Users, Clock, ArrowRight } from "lucide-react";
 import React from 'react';
+import { commonContent } from "./sharedContent";
 
 export interface WhyUsContent {
   sectionTitle: {
@@ -21,9 +22,9 @@ export interface WhyUsContent {
 
 export const whyUsContent: WhyUsContent = {
   sectionTitle: {
-    title: "Why ",
+    title: "Why",
     subtitle: "Reason to choose us",
-    highlightText: "Modern Interior",
+    highlightText: commonContent.companyName,
     description: "We're committed to delivering exceptional interior design solutions that exceed your expectations"
   },
   features: [

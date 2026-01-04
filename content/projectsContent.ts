@@ -18,7 +18,7 @@ export interface ProjectsContent {
 
 export const projectsContent: ProjectsContent = {
   sectionTitle: {
-    title: "Our ",
+    title: "Our",
     highlightText: "Recent Projects",
     description: "Explore our portfolio of beautifully designed spaces that reflect our passion for interior design"
   },

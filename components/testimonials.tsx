@@ -199,7 +199,7 @@ function TestimonialCard({ testimonial, onPlayVideo }: {
     };
 
     return (
-        <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 h-full flex flex-col">
+        <div className="relative bg-muted rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 h-full flex flex-col">
             <div className="flex items-center mb-6">
                 <div className="relative h-16 w-16 rounded-full overflow-hidden border-2 border-primary/20 mr-4 bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
                     {imgError ? (

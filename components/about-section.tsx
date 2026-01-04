@@ -5,7 +5,7 @@ import { aboutContent } from "@/content/aboutContent"
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-background">
+    <section id="about" className="py-12 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <SectionHeading
@@ -18,7 +18,7 @@ export function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             {aboutContent.description.map((paragraph, index) => (
-              <p key={index} className="text-lg text-muted-foreground">
+              <p key={index} className="text-lg text-muted-foreground text-justify">
                 {paragraph}
               </p>
             ))}
@@ -39,7 +39,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {aboutContent.stats.map((stat, index) => (
               <div 
                 key={index}

@@ -4,7 +4,7 @@ import { servicesContent } from "@/content/servicesContent"
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-muted/30">
+    <section id="services" className="py-12 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <SectionHeading

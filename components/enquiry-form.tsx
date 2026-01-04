@@ -31,7 +31,11 @@ const formSchema = z.object({
     }
 )
 
-export function EnquiryForm() {
+interface EnquiryFormProps {
+  onSuccess?: () => void;
+}
+
+export function EnquiryForm({ onSuccess }: EnquiryFormProps) {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -44,6 +48,9 @@ export function EnquiryForm() {
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values)
         // Handle form submission here
+        if (onSuccess) {
+            onSuccess();
+        }
     }
 
     return (
@@ -70,7 +77,7 @@ export function EnquiryForm() {
                         <FormItem>
                             <FormLabel>Phone</FormLabel>
                             <FormControl>
-                                <Input placeholder={commonContent.phone} {...field} />
+                                <Input placeholder="Contact number" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -84,7 +91,7 @@ export function EnquiryForm() {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input placeholder={commonContent.Email} {...field} />
+                                <Input placeholder="Contact email" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -92,7 +99,7 @@ export function EnquiryForm() {
                 />
 
                 <Button type="submit" className="w-full">
-                    Submit Enquiry
+                    Submit
                 </Button>
             </form>
         </Form>

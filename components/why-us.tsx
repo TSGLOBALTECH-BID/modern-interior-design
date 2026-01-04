@@ -10,7 +10,7 @@ export function WhyUs() {
   const { sectionTitle, features, ctaButton } = whyUsContent;
 
   return (
-    <section id="why-choose-us" className="py-20 bg-background">
+    <section id="why-choose-us" className="py-12 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
          <SectionHeading

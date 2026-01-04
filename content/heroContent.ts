@@ -1,4 +1,4 @@
-import { ButtonContent } from "./sharedContent";
+import { commonContent } from "./sharedContent";
 
 export interface HeroContent {
   backgroundImage: {
@@ -7,7 +7,6 @@ export interface HeroContent {
     alt: string;
   };
   heading: string;
-  buttons: ButtonContent[];
   form: {
     title: string;
   };
@@ -17,18 +16,11 @@ export const heroContent: HeroContent = {
   backgroundImage: {
     light: "/images/hero-background.avif",
     dark: "/images/hero-background.avif",
-    alt: "Modern Interior Design"
+    alt: commonContent.companyName,
   },
-  heading: "Transform Your Space with Modern Design",
-  buttons: [
-    {
-      text: "Explore Works Done"
-    },
-    {
-      text: "Book Free Consultation"
-    }
-  ],
+  heading: `Transform your space with`,
+ 
   form: {
-    title: "Get in Touch",
+    title: "Book Free Consultation",
   }
 };

@@ -85,7 +85,7 @@ export function Footer() {
                 placeholder="Your email"
                 className="px-4 py-2 text-sm bg-slate-800 border-slate-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent flex-1 placeholder-slate-500"
               />
-              <Button type="button" className="rounded-l-none bg-primary hover:bg-primary/90">
+              <Button type="button" variant={"outline"} className="rounded-l-none bg-primary hover:bg-primary/90">
                 Subscribe
               </Button>
             </div>

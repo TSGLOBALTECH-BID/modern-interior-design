@@ -26,7 +26,7 @@ export interface TestimonialsContent {
 
 export const testimonialsContent: TestimonialsContent = {
   sectionTitle: {
-    title: "What Our ",
+    title: "What Our",
     highlightText: "Clients Say",
     description: "Hear from our satisfied clients about their experience working with our design team"
   },

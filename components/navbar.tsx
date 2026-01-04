@@ -54,7 +54,7 @@ export function Navbar() {
     return (
         <header
             className={`w-full ${shouldBeFixed
-                    ? "fixed bg-background/95 top-0 left-0 right-0 backdrop-blur-md shadow-sm z-50"
+                    ? "fixed bg-background/95 top-0 left-0 right-0 backdrop-blur-md shadow-lg z-50"
                     : "absolute top-8 left-0 right-0 z-50"
                 }`}
         >
