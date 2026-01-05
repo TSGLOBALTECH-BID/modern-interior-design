@@ -2,6 +2,7 @@ import Link from "next/link"
 import { commonContent } from "@/content/sharedContent"
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Newsletter } from "./newsletter"
 
 export function Footer() {
   const socialLinks = [
@@ -24,10 +25,10 @@ export function Footer() {
             </p>
             <div className="flex space-x-2">
               {socialLinks.map((social) => (
-                <Button 
-                  key={social.name} 
-                  variant="ghost" 
-                  size="icon" 
+                <Button
+                  key={social.name}
+                  variant="ghost"
+                  size="icon"
                   className="text-slate-400 hover:bg-slate-800 hover:text-white"
                   asChild
                 >
@@ -72,33 +73,16 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-sm font-semibold mb-4 text-white">NEWSLETTER</h4>
-            <p className="text-sm text-slate-400 mb-4">
-              Subscribe to our newsletter for the latest updates and trends.
-            </p>
-            <div className="flex flex-col gap-4">
-              <input
-                type="email" 
-                placeholder="Your email"
-                className="px-4 py-2 text-sm bg-slate-800 border-slate-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent flex-1 placeholder-slate-500"
-              />
-              <Button type="button" variant={"outline"} className="rounded-l-none bg-primary hover:bg-primary/90">
-                Subscribe
-              </Button>
-            </div>
-          </div>
+          <Newsletter />
         </div>
 
         <div className="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
           <p>© {new Date().getFullYear()} {commonContent.companyName}. All rights reserved.</p>
           <p className="mt-2">
             Powered by{' '}
-            <a 
-              href="https://www.tsglobaltech.com" 
-              target="_blank" 
+            <a
+              href="https://www.tsglobaltech.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-secondary hover:underline"
             >

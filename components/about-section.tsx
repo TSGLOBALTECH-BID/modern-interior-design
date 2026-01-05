@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { SectionHeading } from "./shared/section-heading"
 import { aboutContent } from "@/content/about/aboutSectionContent"
+import Link from "next/link"
 
 export function AboutSection() {
   return (
@@ -22,26 +23,27 @@ export function AboutSection() {
                 {paragraph}
               </p>
             ))}
+
             <div className="flex flex-wrap gap-4 pt-4">
-              {aboutContent.buttons.map((button, index) => (
-                <Button 
-                  key={index} 
-                  variant={button.variant} 
-                  size="lg" 
-                  className={button.icon ? "gap-2 group" : ""}
-                >
-                  {button.text}
-                  {button.icon === "ArrowRight" && (
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  )}
-                </Button>
-              ))}
+              <Button asChild variant="default" size="lg" className="gap-2 group">
+                <Link href="/about" aria-label="Read more about us">
+                  Read More
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+
+              <Button asChild variant="outline" size="lg" className="gap-2 group">
+                <Link href="/our-works" aria-label="View our works">
+                  Our Works
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {aboutContent.stats.map((stat, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-card p-8 rounded-xl border border-border hover:border-primary/20 hover:shadow-lg transition-all h-full flex flex-col"
               >

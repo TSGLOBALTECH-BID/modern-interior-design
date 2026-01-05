@@ -4,6 +4,7 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -14,6 +15,8 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Loader2 } from "lucide-react"
+import { toast } from "@/hooks/use-toast"
 
 import { commonContent } from "@/content/sharedContent"
 
@@ -36,6 +39,8 @@ interface EnquiryFormProps {
 }
 
 export function EnquiryForm({ onSuccess }: EnquiryFormProps) {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -45,62 +50,111 @@ export function EnquiryForm({ onSuccess }: EnquiryFormProps) {
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
-        // Handle form submission here
-        if (onSuccess) {
-            onSuccess();
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        try {
+            setIsSubmitting(true)
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 1000))
+            
+            // Log the form values
+            console.log("Form submitted:", values)
+            
+            // Show success message
+            toast({
+                title: "Success!",
+                description: "Your enquiry has been submitted successfully. We'll get back to you soon!",
+                variant: "success",
+            })
+            
+            // Reset form
+            form.reset()
+            
+            // Call the onSuccess callback if provided
+            if (onSuccess) {
+                onSuccess()
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error)
+            toast({
+                title: "Error",
+                description: "There was an error submitting your enquiry. Please try again later.",
+                variant: "destructive",
+            })
+        } finally {
+            setIsSubmitting(false)
         }
     }
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-md">
-                <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Name *</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Your name" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+            <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-md">
+                <div className="space-y-2 flex flex-col">
+                    <div className="flex-1 overflow-y-auto pr-2 space-y-2">
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Name *</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Your name" {...field} />
+                                    </FormControl>
+                                    <div className="min-h-[15px]">
+                                        <FormMessage className="text-sm" />
+                                    </div>
+                                </FormItem>
+                            )}
+                        />
 
-                <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Phone</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Contact number" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+                        <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Phone</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Contact number" {...field} />
+                                    </FormControl>
+                                    <div className="min-h-[15px]">
+                                        <FormMessage className="text-sm" />
+                                    </div>
+                                </FormItem>
+                            )}
+                        />
 
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Contact email" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <Button type="submit" className="w-full">
-                    Submit
-                </Button>
+                        <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Email</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Contact email" {...field} />
+                                    </FormControl>
+                                    <div className="min-h-[15px]">
+                                        <FormMessage className="text-sm" />
+                                    </div>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                    <div className="pt-0">
+                        <Button 
+                            type="submit" 
+                            className="w-full"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Submitting...
+                                </>
+                            ) : (
+                                "Submit"
+                            )}
+                        </Button>
+                    </div>
+                </div>
             </form>
         </Form>
     )
