@@ -1,75 +1,12 @@
 'use client';
 import { EnquiryForm } from "@/components/enquiry-form";
 import { MapPin, Mail, Phone, Clock } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-// Dynamically import the Map components with SSR disabled
-const MapContainer = dynamic(
-  () => import('react-leaflet').then((mod) => {
-    const { MapContainer } = mod;
-    return function DynamicMapContainer(props: any) {
-      return <MapContainer {...props} />;
-    };
-  }),
-  { ssr: false }
-);
-const TileLayer = dynamic(
-  () => import('react-leaflet').then((mod) => mod.TileLayer),
-  { ssr: false }
-);
-const Marker = dynamic(
-  () => import('react-leaflet').then((mod) => mod.Marker),
-  {
-    ssr: false,
-    loading: () => <div className="h-full w-full bg-gray-100" />
-  }
-);
-const Popup = dynamic(
-  () => import('react-leaflet').then((mod) => mod.Popup),
-  { ssr: false }
-);
 
-// Create a custom marker icon
-const createIcon = () => {
-  if (typeof window !== 'undefined') {
-    const L = require('leaflet');
-    return L.icon({
-      iconUrl: '/images/marker-icon.png',
-      shadowUrl: '/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41]
-    });
-  }
-  return null;
-};
+import { Map } from '@/components/Map'
+import { commonContent } from "@/content/sharedContent";
 
 export default function ContactPage() {
-  const [isMounted, setIsMounted] = useState(false);
-  const [MapReady, setMapReady] = useState(false);
-  const [icon, setIcon] = useState<any>(null);
-  useEffect(() => {
-    setIsMounted(true);
-    setIcon(createIcon());
-  }, []);
 
-  useEffect(() => {
-    // Only run on client side
-    setIsMounted(true);
-    setMapReady(true);
-  }, []);
-
-  if (!isMounted || !icon) {
-    return (
-      <div className="min-h-screen bg-white">
-        {/* Add a loading state or skeleton here */}
-        <div className="h-[400px] bg-gray-100 flex items-center justify-center">
-          Loading map...
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -104,7 +41,7 @@ export default function ContactPage() {
       <div className="py-16 bg-gray-50" id="contact-form">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
-            
+
 
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-xl shadow-sm border h-full">
@@ -112,7 +49,7 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-bold mb-2">Send us a Message</h2>
                 <p className="text-gray-600">Have questions or want to discuss your project? Fill out the form below and our team will get back to you within 24 hours.</p>
               </div>
-              
+
               <div className="px-16">
                 <EnquiryForm showMessage={true} />
               </div>
@@ -128,21 +65,21 @@ export default function ContactPage() {
                       <MapPin className="h-6 w-6 text-primary mt-1 mr-4 flex-shrink-0" />
                       <div>
                         <h3 className="font-medium text-gray-900">Visit Us</h3>
-                        <p className="text-gray-600">123 Design Street, New Delhi, India 110001</p>
+                        <p className="text-gray-600">{commonContent.Address}</p>
                       </div>
                     </div>
                     <div className="flex items-start">
                       <Mail className="h-5 w-5 text-primary mt-1 mr-4 flex-shrink-0" />
                       <div>
                         <h3 className="font-medium text-gray-900">Email Us</h3>
-                        <a href="mailto:info@whiteoakinterior.com" className="text-primary hover:underline">info@whiteoakinterior.com</a>
+                        <a href={commonContent.Email} className="text-primary hover:underline">{commonContent.Email}</a>
                       </div>
                     </div>
                     <div className="flex items-start">
                       <Phone className="h-5 w-5 text-primary mt-1 mr-4 flex-shrink-0" />
                       <div>
                         <h3 className="font-medium text-gray-900">Call Us</h3>
-                        <a href="tel:+91783XXX3462" className="text-primary hover:underline">+91 783 XXX 3462</a>
+                        <a href={`tel:${commonContent.phone}`} className="text-primary hover:underline">{commonContent.phone}</a>
                       </div>
                     </div>
                   </div>
@@ -183,31 +120,10 @@ export default function ContactPage() {
       <div className="bg-white py-16" id="map">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8 text-center">Our Location</h2>
-          <div className="bg-white rounded-xl shadow-sm border overflow-hidden" style={{ height: '500px' }}>
-            {isMounted && MapReady && (
-              <MapContainer
-                center={[28.6139, 77.2090]}
-                zoom={15}
-                style={{ height: '100%', width: '100%' }}
-                zoomControl={true}
-                className="z-10"
-              >
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Marker
-                  position={[28.6139, 77.2090]}
-                  icon={icon}
-                >
-                  <Popup>
-                    <div className="text-sm font-medium">White Oak Interior Design</div>
-                    <div className="text-xs text-gray-600">123 Design Street, New Delhi</div>
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            )}
-          </div>
+          <Map
+            height="500px"
+            markerText={commonContent.companyName}
+            subText={commonContent.Address} />
         </div>
       </div>
     </div>
