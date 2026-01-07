@@ -19,6 +19,7 @@ import { Loader2 } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
 
 import { commonContent } from "@/content/sharedContent"
+import { Textarea } from "./ui/textarea"
 
 const formSchema = z.object({
     name: z.string().min(2, {
@@ -26,6 +27,7 @@ const formSchema = z.object({
     }),
     email: z.string().email().optional().or(z.literal("")),
     phone: z.string().optional().or(z.literal("")),
+    message: z.string().optional(),
 }).refine(
     (data) => data.email || data.phone,
     {
@@ -35,43 +37,43 @@ const formSchema = z.object({
 )
 
 interface EnquiryFormProps {
-  onSuccess?: () => void;
+    onSuccess?: () => void;
+    showMessage?: boolean;
 }
 
-export function EnquiryForm({ onSuccess }: EnquiryFormProps) {
+export function EnquiryForm({ onSuccess, showMessage=false }: EnquiryFormProps) {
     const [isSubmitting, setIsSubmitting] = useState(false)
-    
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
             email: "",
             phone: "",
+             ...(showMessage && { message: "" })
         },
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             setIsSubmitting(true)
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1000))
-            
-            // Log the form values
-            console.log("Form submitted:", values)
-            
-            // Show success message
-            toast({
-                title: "Success!",
-                description: "Your enquiry has been submitted successfully. We'll get back to you soon!",
-                variant: "success",
-            })
-            
-            // Reset form
-            form.reset()
-            
-            // Call the onSuccess callback if provided
-            if (onSuccess) {
-                onSuccess()
+            // const response = await fetch('/api/contact', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(values),
+            // })
+            // if (response.ok) {
+            if (true) {
+                toast({
+                    title: "Success!",
+                    description: "Your message has been sent successfully.",
+                })
+                form.reset()
+                onSuccess?.()
+            } else {
+                throw new Error('Failed to send message')
             }
         } catch (error) {
             console.error("Error submitting form:", error)
@@ -137,10 +139,29 @@ export function EnquiryForm({ onSuccess }: EnquiryFormProps) {
                                 </FormItem>
                             )}
                         />
+                        {showMessage && (
+                        <FormField
+                            control={form.control}
+                            name="message"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Message</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="Tell us more about your project..."
+                                            className="min-h-[120px]"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        )}
                     </div>
                     <div className="pt-0">
-                        <Button 
-                            type="submit" 
+                        <Button
+                            type="submit"
                             className="w-full"
                             disabled={isSubmitting}
                         >
