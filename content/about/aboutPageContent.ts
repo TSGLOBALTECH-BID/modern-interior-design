@@ -46,7 +46,7 @@ export interface AboutContent {
 export const aboutPageContent: AboutContent = {
   hero: {
     title: "Our Story",
-    subtitle: "Crafting spaces that inspire and transform lives since 2009"
+    subtitle: "Crafting spaces that inspire and transform lives"
   },
   about: {
     title: "Who We Are",
