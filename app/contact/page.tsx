@@ -50,7 +50,7 @@ export default function ContactPage() {
                 <p className="text-gray-600">Have questions or want to discuss your project? Fill out the form below and our team will get back to you within 24 hours.</p>
               </div>
 
-              <div className="px-16">
+              <div className="px-2 md:px-16">
                 <EnquiryForm showMessage={true} />
               </div>
             </div>
@@ -91,7 +91,7 @@ export default function ContactPage() {
                     <Clock className="h-5 w-5 text-primary mt-1 mr-4 flex-shrink-0" />
                     <div className="w-full">
                       <h3 className="font-medium text-gray-900 mb-3">Working Hours</h3>
-                      <div className="bg-gray-50 rounded-lg p-4 space-y-2">
+                      <div className="bg-gray-50 rounded-lg p-0 md:p-4 space-y-2">
                         {[
                           'Monday: 9:00 AM - 6:00 PM',
                           'Tuesday: 9:00 AM - 6:00 PM',
