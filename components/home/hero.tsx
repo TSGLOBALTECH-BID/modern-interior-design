@@ -8,6 +8,7 @@ import { EnquiryForm } from "@/components/enquiry-form"
 import { heroContent } from "@/content/heroContent"
 import { commonContent } from '@/content/sharedContent';
 import { EnquiryPopup } from "@/components/enquiry-popup"
+import Link from "next/link"
 
 export function Hero() {
     const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -58,7 +59,9 @@ export function Hero() {
                         </h1>
                         <div className="flex flex-wrap flex-col gap-4 pt-4 w-full items-center">
                                 <Button variant={"default"} className='w-64'                               >
+                                    <Link href='/services'>
                                     {"Explore more"}
+                                    </Link>
                                 </Button>
                                  <Button 
                                     variant={"outline"} 

@@ -1,6 +1,7 @@
 import { Button } from "../ui/button"
 import { SectionHeading } from "../shared/section-heading"
 import { servicesContent } from "@/content/services/servicesSectionContent"
+import Link from "next/link"
 
 export function ServicesSection() {
   return (
@@ -20,7 +21,7 @@ export function ServicesSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesContent.services.map((service, index) => (
-            <div 
+            <div
               key={index}
               className="bg-card p-8 rounded-xl border border-border hover:border-primary/20 hover:shadow-lg transition-all duration-300 h-full flex flex-col"
             >
@@ -32,7 +33,9 @@ export function ServicesSection() {
                 {service.description}
               </p>
               <Button variant="link" className="w-fit p-0 h-auto text-primary group">
-                Read more
+                <Link href={`/services`}>
+                  Read more
+                </Link>
                 <span className="ml-2 transition-transform group-hover:translate-x-1">
                   {servicesContent.ctaButton.icon}
                 </span>
@@ -43,7 +46,9 @@ export function ServicesSection() {
 
         <div className="text-center mt-12">
           <Button size="lg" className="gap-2 group">
-            {servicesContent.ctaButton.text}
+            <Link href={`/services`}>
+              {servicesContent.ctaButton.text}
+            </Link>
             <span className="transition-transform group-hover:translate-x-1">
               {servicesContent.ctaButton.icon}
             </span>

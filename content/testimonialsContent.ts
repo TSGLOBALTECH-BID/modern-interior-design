@@ -40,15 +40,15 @@ export const testimonialsContent: TestimonialsContent = {
       content: "The team transformed our apartment into a modern masterpiece. Their attention to detail and design expertise is unmatched. We couldn't be happier with the results!",
       rating: 5,
       project: "Luxury Apartment",
-      videoUrl: "https://www.youtube.com/embed/tW7ItIBq7uQ",
-      gallery: {
-        title: "Apartment Transformation",
-        images: [
-          "/images/projects/living-room.jpg",
-          "/images/projects/kitchen.jpg",
-          "/images/projects/bedroom.jpg"
-        ]
-      }
+      // videoUrl: "https://www.youtube.com/embed/tW7ItIBq7uQ",
+      // gallery: {
+      //   title: "Apartment Transformation",
+      //   images: [
+      //     "/images/projects/living-room.jpg",
+      //     "/images/projects/kitchen.jpg",
+      //     "/images/projects/bedroom.jpg"
+      //   ]
+      // }
     },
     {
       id: 2,
