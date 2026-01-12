@@ -3,6 +3,9 @@ import { Check, Award, Users, Palette, Clock, Shield } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { aboutPageContent } from "@/content/about/aboutPageContent";
+import { commonContent } from "@/content/sharedContent";
+import { PageHero } from "@/components/shared/page-hero";
+import { SectionHeading } from "@/components/shared/section-heading";
 
 // Map icon names to components
 const iconComponents: { [key: string]: React.ElementType } = {
@@ -17,32 +20,20 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/about-hero.jpg"
-            alt="Modern interior design"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        <div className="container mx-auto px-4 text-white">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">{hero.title}</h1>
-          <p className="text-xl md:text-2xl max-w-2xl">
-            {hero.subtitle}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title={hero.title}
+        description={hero.subtitle}
+      />
 
       {/* About Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">{about.title}</h2>
+              <SectionHeading
+                title={"Who"}
+                highlightText="We Are"
+              />
               {about.description.map((paragraph, index) => (
                 <p key={index} className="text-lg text-muted-foreground mb-6 last:mb-8">
                   {paragraph}
@@ -85,7 +76,10 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">{values.title}</h2>
+             <SectionHeading
+                title={"Our Core"}
+                highlightText="Values"
+              />
             <p className="text-muted-foreground max-w-2xl mx-auto">
               {values.subtitle}
             </p>

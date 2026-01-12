@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { EnquiryForm } from "@/components/enquiry-form"
 import { heroContent } from "@/content/heroContent"
 import { commonContent } from '@/content/sharedContent';
-import { EnquiryPopup } from './enquiry-popup';
+import { EnquiryPopup } from "@/components/enquiry-popup"
 
 export function Hero() {
     const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);

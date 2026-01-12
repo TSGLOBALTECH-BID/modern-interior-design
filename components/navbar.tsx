@@ -7,27 +7,27 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-
+import Image from "next/image"
 import { commonContent } from "@/content/sharedContent"
 
 // Custom hook to handle mobile detection
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false)
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    
-    // Initial check
-    checkMobile()
-    
-    // Add event listener for window resize
-    window.addEventListener('resize', checkMobile)
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-  return isMobile
+    const [isMobile, setIsMobile] = useState(false)
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768)
+        }
+
+        // Initial check
+        checkMobile()
+
+        // Add event listener for window resize
+        window.addEventListener('resize', checkMobile)
+
+        // Cleanup
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
+    return isMobile
 }
 
 export function Navbar() {
@@ -56,41 +56,53 @@ export function Navbar() {
     return (
         <header
             className={`w-full ${shouldBeFixed
-                    ? "fixed bg-background/95 top-0 left-0 right-0 backdrop-blur-md shadow-lg z-50"
-                    : "absolute top-8 left-0 right-0 z-50"
+                ? "fixed bg-background/95 top-0 left-0 right-0 backdrop-blur-md shadow-lg z-50"
+                : "absolute top-8 left-0 right-0 z-50"
                 }`}
         >
             <div className={`container mx-auto px-4 ${!shouldBeFixed
-                    ? "bg-background/95 rounded-lg"
-                    : ""
+                ? "bg-background/95 rounded-lg"
+                : ""
                 }`}>
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center h-[4.25rem]">
                     {/* Logo */}
-                    <Link href="/" className="text-xl font-bold text-foreground whitespace-nowrap">
-                        {commonContent.companyName}
+                    <Link href="/" className="flex items-center">
+                        <Image
+                            src="/images/logo.png"
+                            alt={commonContent.companyName}
+                            width={160}  // Adjust based on your logo's aspect ratio
+                            height={160}  // Adjust based on your logo's aspect ratio
+                            className="h-16 w-auto"  // Maintain aspect ratio
+                            priority
+                        />
+                        <span className="sr-only">{commonContent.companyName}</span>
+                        <span className="text-xl px-[0.5rem] font-bold text-foreground/50 whitespace-nowrap">
+                            {commonContent.companyName}
+                        </span>
                     </Link>
+
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center w-full">
                         <nav className="mx-auto flex items-center space-x-8">
-                        {navItems.map((item) => {
-                            const isActive = pathname === item.href || 
-                                          (item.href !== '/' && pathname.startsWith(item.href))
-                            return (
-                                <Link
-                                    key={item.name}
-                                    href={item.href}
-                                    className={cn(
-                                        "relative py-1 px-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300",
-                                        isActive 
-                                            ? "text-foreground font-semibold after:w-full" 
-                                            : "text-foreground/80 hover:text-foreground after:w-0 hover:after:w-full after:bg-foreground/20"
-                                    )}
-                                >
-                                    {item.name}
-                                </Link>
-                            )
-                        })}
+                            {navItems.map((item) => {
+                                const isActive = pathname === item.href ||
+                                    (item.href !== '/' && pathname.startsWith(item.href))
+                                return (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className={cn(
+                                            "relative py-1 px-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300",
+                                            isActive
+                                                ? "text-foreground font-semibold after:w-full"
+                                                : "text-foreground/80 hover:text-foreground after:w-0 hover:after:w-full after:bg-foreground/20"
+                                        )}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                )
+                            })}
                         </nav>
                         <Link href="/contact" passHref>
                             <Button size="sm" className="ml-8">

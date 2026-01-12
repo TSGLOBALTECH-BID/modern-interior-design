@@ -1,11 +1,9 @@
 // app/page.tsx
-import { EnquiryForm } from "@/components/enquiry-form"
-import { Hero } from "@/components/hero"
-import { AboutSection } from "@/components/about-section"
-import { ServicesSection } from "@/components/services-section"
-import { WhyUs } from "@/components/why-us"
-import { RecentProjects } from "@/components/recent-projects"
-import { Footer } from "@/components/footer"
+import { Hero } from "@/components/home/hero"
+import { AboutSection } from "@/components/home/about-section"
+import { ServicesSection } from "@/components/home/services-section"
+import { WhyUs } from "@/components/home/why-us"
+import { RecentProjects } from "@/components/home/recent-projects"
 import { Testimonials } from "@/components/testimonials"
 
 export default function Home() {

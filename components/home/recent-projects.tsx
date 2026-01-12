@@ -3,7 +3,7 @@ import { ArrowRight, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { projectsContent } from "@/content/projectsContent"
-import { SectionHeading } from "./shared/section-heading"
+import { SectionHeading } from "@/components/shared/section-heading"
 
 export function RecentProjects() {
   const { sectionTitle, projects } = projectsContent;

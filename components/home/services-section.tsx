@@ -1,6 +1,6 @@
-import { Button } from "./ui/button"
-import { SectionHeading } from "./shared/section-heading"
-import { servicesContent } from "@/content/servicesContent"
+import { Button } from "../ui/button"
+import { SectionHeading } from "../shared/section-heading"
+import { servicesContent } from "@/content/services/servicesSectionContent"
 
 export function ServicesSection() {
   return (

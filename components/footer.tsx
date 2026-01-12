@@ -3,6 +3,7 @@ import { commonContent } from "@/content/sharedContent"
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Newsletter } from "./newsletter"
+import Image from "next/image"
 
 export function Footer() {
   const socialLinks = [
@@ -18,7 +19,15 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="">
+            <Image
+              src="/images/logo.png"
+              alt={commonContent.companyName}
+              width={160}  // Adjust based on your logo's aspect ratio
+              height={160}  // Adjust based on your logo's aspect ratio
+              className="h-16 w-auto -mt-8"  // Maintain aspect ratio
+              priority
+            />
             <h3 className="text-lg font-semibold text-white">{commonContent.companyName}</h3>
             <p className="text-slate-400 text-sm">
               {commonContent.companyDescription}

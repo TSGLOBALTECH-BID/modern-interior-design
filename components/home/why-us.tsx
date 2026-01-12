@@ -1,6 +1,6 @@
 // components/why-us.tsx
 import { Button } from "@/components/ui/button";
-import { SectionHeading } from "./shared/section-heading";
+import { SectionHeading } from "@/components/shared/section-heading"
 import { whyUsContent } from "@/content/whyUsContent";
 
 

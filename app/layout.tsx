@@ -20,6 +20,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: commonContent.companyName,
   description: commonContent.companyDescription,
+  icons: {
+    icon: [
+      { url: '/images/logo.png', type: 'image/png' },
+      { url: '/images/logo.png', type: 'image/png', sizes: '32x32' },
+      { url: '/images/logo.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: '/images/logo.png',
+    shortcut: '/images/logo.png',
+  },
+  appleWebApp: {
+    title: commonContent.companyName,
+    statusBarStyle: 'black-translucent',
+    startupImage: '/images/logo.png',
+  },
 };
 
 export default function RootLayout({

@@ -4,38 +4,17 @@ import { MapPin, Mail, Phone, Clock } from 'lucide-react';
 
 import { Map } from '@/components/Map'
 import { commonContent } from "@/content/sharedContent";
+import { PageHero } from "@/components/shared/page-hero";
 
 export default function ContactPage() {
 
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-gray-900 to-gray-800 text-white py-20 md:py-32">
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-            <p className="text-xl text-gray-300 mb-8">
-              We'd love to hear from you. Reach out to us for any questions or to schedule a consultation for your next interior design project.
-            </p>
-            <div className="flex flex-wrap gap-6">
-              <a
-                href="#contact-form"
-                className="bg-white text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
-              >
-                Send a Message
-              </a>
-              <a
-                href="#map"
-                className="border border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white/10 transition-colors"
-              >
-                Locate on Map
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen">
+      <PageHero
+        title={"Get in Touch"}
+        description={"We'd love to hear from you. Reach out to us for any questions or to schedule a consultation for your next interior design project."}
+      />
 
       {/* Contact Info & Form Section */}
       <div className="py-16 bg-gray-50" id="contact-form">

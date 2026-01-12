@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
-import { SectionHeading } from "./shared/section-heading"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { aboutContent } from "@/content/about/aboutSectionContent"
 import Link from "next/link"
 
